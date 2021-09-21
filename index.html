@@ -2,15 +2,14 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="icon" href="imgs/favicon.ico">
+        <link rel="icon" href="#">
         <title>MajorityVote</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!-- css -->
         <link rel="stylesheet" href="index.css">
         <!-- js -->
-        <script src=""></script>
+        <script src="index.js"></script>
         <!-- jquery -->
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     </head>
@@ -19,132 +18,46 @@
         <div id="settings">
             <div class="num-members">
                 人数
-                <input id="num-input" type="number" name="example2" value="2" min="2" max="10">
+                <input id="num-member-input" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
             </div>
             <div class="num-selection">
                 選択肢
-                <div id="selection-1"><input id="name-input" data-id="1" type="text" onchange="saveName(this)"></div>
-                <div id="selection-2"><input id="name-input" data-id="2" type="text" onchange="saveName(this)"></div>
-                <div id="selection-3" style="display:none;"><input id="name-input" data-id="3" type="text" onchange="saveName(this)"></div>
-                <div id="selection-4" style="display:none;"><input id="name-input" data-id="4" type="text" onchange="saveName(this)"></div>
-                <div id="selection-5" style="display:none;"><input id="name-input" data-id="5" type="text" onchange="saveName(this)"></div>
-                <div id="selection-6" style="display:none;"><input id="name-input" data-id="6" type="text" onchange="saveName(this)"></div>
-                <div id="selection-7" style="display:none;"><input id="name-input" data-id="7" type="text" onchange="saveName(this)"></div>
-                <div id="selection-8" style="display:none;"><input id="name-input" data-id="8" type="text" onchange="saveName(this)"></div>
-                <div id="selection-9" style="display:none;"><input id="name-input" data-id="9" type="text" onchange="saveName(this)"></div>
-                <div id="selection-10" style="display:none;"><input id="name-input" data-id="10" type="text" onchange="saveName(this)"></div>
+                <input id="num-selection-input" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
+                <div id="selection-1"><input id="name-input" data-id="1" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-2"><input id="name-input" data-id="2" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-3" style="display:none;"><input id="name-input" data-id="3" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-4" style="display:none;"><input id="name-input" data-id="4" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-5" style="display:none;"><input id="name-input" data-id="5" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-6" style="display:none;"><input id="name-input" data-id="6" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-7" style="display:none;"><input id="name-input" data-id="7" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-8" style="display:none;"><input id="name-input" data-id="8" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-9" style="display:none;"><input id="name-input" data-id="9" type="text" onchange="saveInputValue(this)"></div>
+                <div id="selection-10" style="display:none;"><input id="name-input" data-id="10" type="text" onchange="saveInputValue(this)"></div>
             </div>
-            <button id="setting-enter-btn">決定</button>
+            <button id="setting-enter-btn" onclick="goToVote()">決定</button>
         </div>
 
         <div id="vote" style="display:none;">
-            <div> 投票中 <span id="i-vote"></span></div>
+            <div> 投票中 <span id="vote-state"></span></div>
 
             <div class="vote-selection">
-                <div id="selection-1"><div id="name-1"></div><input id="num-vote-1" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-2"><div id="name-2"></div><input type="range" id="num-vote-2" name="speed" min="0" max="100"></div>
-                <div id="selection-3" style="display:none;"><div id="name-3"></div><input id="num-vote-3" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-4" style="display:none;"><div id="name-4"></div><input id="num-vote-4" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-5" style="display:none;"><div id="name-5"></div><input id="num-vote-5" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-6" style="display:none;"><div id="name-6"></div><input id="num-vote-6" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-7" style="display:none;"><div id="name-7"></div><input id="num-vote-7" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-8" style="display:none;"><div id="name-8"></div><input id="num-vote-8" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-9" style="display:none;"><div id="name-9"></div><input id="num-vote-9" type="range" name="speed" min="0" max="100"></div>
-                <div id="selection-10" style="display:none;"><div id="name-10"></div><input id="num-vote-10" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-1"><div id="name-1"></div><input id="num-vote-1" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-2"><div id="name-2"></div><input id="num-vote-2" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-3" style="display:none;"><div id="name-3"></div><input id="num-vote-3" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-4" style="display:none;"><div id="name-4"></div><input id="num-vote-4" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-5" style="display:none;"><div id="name-5"></div><input id="num-vote-5" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-6" style="display:none;"><div id="name-6"></div><input id="num-vote-6" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-7" style="display:none;"><div id="name-7"></div><input id="num-vote-7" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-8" style="display:none;"><div id="name-8"></div><input id="num-vote-8" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-9" style="display:none;"><div id="name-9"></div><input id="num-vote-9" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-10" style="display:none;"><div id="name-10"></div><input id="num-vote-10" type="range" name="speed" min="0" max="100"></div>
             </div>
 
-            <button id="vote-enter-btn">投票完了</button>
+            <button id="vote-enter-btn" onclick="aVoteFinish()">投票完了</button>
         </div>
 
         <div id="result" style="display:none;">
-            <div><span id="result-selection"></span>になりました</div>
+            <div>投票の結果<span id="result-selection"></span>になりました</div>
         </div>
     </body>
 </html>
-
-<!---------- script ---------->
-<script>
-    //display max window
-    $(window).on('load resize',function(){
-    $('body').css('width',  $(window).width() - 8);
-    $('body').css('height',  $(window).height());
-    });
-    var numMember = 2;
-    var selectionName = new Array(10);
-
-    $('#num-input').on("change", function(){
-        var input = document.getElementById('num-input');
-        var count = input.value;
-        // input regulation
-        if(count < 2) {
-            count = 2;
-            input.value = "2";
-        }
-        if(count > 10) {
-            count = 10;
-            input.value = "10";
-        }
-        // visible or invisible
-        for(var i=1; i<11; i++) {
-            var iSelection = document.getElementById('selection-' + i);
-            if(i > count) iSelection.style.display = 'none';
-            else iSelection.style.display = 'block';
-        }
-        numMember = count;
-    });
-
-    function saveName(obj) {
-        selectionName[obj.dataset.id - 1] = obj.value;  
-    }
-    
-    var iNum = 1;
-    var voteState = new Array(10);
-    document.getElementById('setting-enter-btn').onclick = function() {
-        document.getElementById('settings').style.display = 'none';
-        document.getElementById('vote').style.display = 'block';
-        document.getElementById("i-vote").innerHTML = '1 / ' + numMember;
-
-        // visible or invisible
-        for(var i=1; i<numMember+1; i++) {
-            var iSelection = document.getElementById('selection-' + i);
-            iSelection.style.display = 'block';
-            document.getElementById('name-' + i).innerHTML = selectionName[i-1];
-            // init vote state
-            voteState[i-1] = 0;
-        }
-    };
-
-    document.getElementById('vote-enter-btn').onclick = function() {
-        iNum += 1;
-
-        if(iNum == numMember) {
-            //save vote state
-            for(var i=1; i<numMember+1; i++) {
-                var iSelection = document.getElementById('num-vote-' + i);
-                voteState[i-1] += parseInt(iSelection.value);
-                iSelection.value = 50;
-            }
-            document.getElementById("i-vote").innerHTML = iNum + ' / ' + numMember;
-        }
-        else {
-            document.getElementById('vote').style.display = 'none';
-            document.getElementById('result').style.display = 'block';
-            maxVoteIndex = getMaxId(voteState);
-            console.log(maxVoteIndex);
-            document.getElementById('result-selection').innerHTML = selectionName[maxVoteIndex-1];
-        }
-    };
-
-    function getMaxId(arr) {
-        if (arr.length == 0) {
-            return -1;
-        }
-        var maxId = 0;
-        for (var id = 1; id < arr.length; id++) {
-            if (arr[id] > arr[maxId]) {
-            maxId = id;
-            }
-        }
-        return maxId;
-    }
-</script>
