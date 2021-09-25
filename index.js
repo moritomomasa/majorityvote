@@ -67,11 +67,9 @@ function dispVoteScreen() {
 function aVoteFinish() {
     iVote += 1;
     // is there the next person  or not
-    if(numMembers >= iVote) {
-        document.getElementById("vote-state").innerHTML = iVote + ' / ' + numMembers;
-        calcVoteAggregation();
-    }
-    else {
+    document.getElementById("vote-state").innerHTML = iVote + ' / ' + numMembers;
+    calcVoteAggregation();
+    if(numMembers < iVote) {
         goToResult();
     }
 }
@@ -93,41 +91,60 @@ function goToResult() {
 function dispResultScreen() {
     document.getElementById('result').style.display = 'block';
     maxVoteIndex = getMaxId(voteAggregation);
-    document.getElementById('result-selection').innerHTML = selectionsName[maxVoteIndex-1];
+    document.getElementById('top1').innerHTML = selectionsName[maxVoteIndex];
+    dispGraph();
+    setTimeout(skillSet(voteAggregation[maxVoteIndex]), 500);
 }
 
 function getMaxId(arr) {
-    if (arr.length == 0) return -1;
+    if(arr.length == 0) return -1;
     var maxId = 0;
-    for (var i=1; i<arr.length; i++) {
-        if (arr[i] > arr[maxId]) {
+    for(var i=1; i<arr.length; i++) {
+        if(arr[i] > arr[maxId]) {
             maxId = i;
         }
     }
     return maxId;
 }
 
-$(document).ready(function() {
-    function skillSet() {
-      $('.bar-info').each(function() {
+function dispGraph() {
+    for(i=0; i<numSelections; i++) {
+        total = voteAggregation[i];
+        document.getElementById('result-graph').innerHTML += 
+                `<div class="result-selection">
+                    <div class="name">` + selectionsName[i] + `</div>
+                    <div class='bar'>   
+                        <div class='bar-info result' data-total='` + total + `'>
+                            <span class='percent'>` + total + `</span>
+                        </div>
+                    </div>
+                </div>`;
+    }
+}
+
+function skillSet(numMaxVote) {
+    $('.bar-info').each(function() {
         total = $(this).data("total");
-        $(this).css("width", total + "%");
-      });
+        width = (total/numMaxVote) * 100;
+        $(this).css("width", width + "%");
+    });
       
-      $('.percent').each(function() {
+    $('.percent').each(function() {
         var $this = $(this);
         $({
           Counter: 10
         }).animate({
           Counter: $this.text()
         }, {
-          duration: 3000,
+          duration: 1000,
           easing: 'swing',
           step: function() {
-            $this.text(Math.ceil(this.Counter) + "%");
+            $this.text(Math.ceil(this.Counter));
           }
         });
-      });
-    };
-    setTimeout(skillSet, 1000);
-  });
+    });
+};
+
+function reload() {
+    location.reload();
+}

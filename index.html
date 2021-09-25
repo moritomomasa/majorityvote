@@ -26,13 +26,13 @@
         <div id="settings">
             <div class="num-members">
                 <div class="num-members-input">
-                    <label>人数</label>
+                    <label>人数 2~10</label>
                     <input id="num-member-input" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
                 </div>
             </div>
             <div class="num-selection">
                 <div class="num-selection-input">
-                    <label>選択肢</label> 
+                    <label>選択肢 2~10</label> 
                     <input id="num-selection-input" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
                 </div>
                 <div class="selection">
@@ -71,37 +71,9 @@
 
         <!------------------ RESULT  ------------------>
         <div id="result" style="display:none;">
-            <div>投票の結果<span id="result-selection"></span>になりました</div>
-            <div class='wrapper'>
-                <div class="result-slection">
-                    <div class="name">dada</div>
-                    <div class='bar'>   
-                        <div class='bar-info html' data-total='95'>
-                            <span class='percent'>95</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='bar'>
-                  <div class='bar-info css' data-total='95'>
-                    <span class='percent'>95</span>
-                  </div>
-                </div>
-            
-                <div class='bar'>
-                  <div class='bar-info js' data-total='90'>
-                    <span class='percent'>90</span>
-                  </div>
-                </div>
-                
-                <div class='bar'>
-                  <div class='bar-info ps' data-total='85'>
-                    <span class='percent'>85</span>
-                  </div>
-                </div>
-              </div>
-        </div>
-
+            <div>投票の結果<span id="top1"></span>になりました</div>
+            <div id="result-graph" class='wrapper'></div>
+            <a id="return-btn" class="button is-primary" onclick="reload()">戻る</a>
         </div>
     </body>
 </html>
