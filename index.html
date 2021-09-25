@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  lang="ja">
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="#">
@@ -9,55 +9,99 @@
         <!-- css -->
         <link rel="stylesheet" href="index.css">
         <!-- js -->
-        <script src="index.js"></script>
-        <!-- jquery -->
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="index.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" defer ></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
     </head>
 
     <body>
+        <!------------------ HEADER  ------------------>
+        <header class="navbar is-primary is-bold">
+            <h1 class="title has-text-white">Majority Vote</h1>
+        </header>
+
+        <div class="main has-text-centered">
+        <!------------------ SETTING  ------------------>
         <div id="settings">
             <div class="num-members">
-                人数
-                <input id="num-member-input" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
+                <div class="num-members-input">
+                    <label>人数</label>
+                    <input id="num-member-input" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
+                </div>
             </div>
             <div class="num-selection">
-                選択肢
-                <input id="num-selection-input" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
-                <div id="selection-1"><input id="name-input" data-id="1" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-2"><input id="name-input" data-id="2" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-3" style="display:none;"><input id="name-input" data-id="3" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-4" style="display:none;"><input id="name-input" data-id="4" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-5" style="display:none;"><input id="name-input" data-id="5" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-6" style="display:none;"><input id="name-input" data-id="6" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-7" style="display:none;"><input id="name-input" data-id="7" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-8" style="display:none;"><input id="name-input" data-id="8" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-9" style="display:none;"><input id="name-input" data-id="9" type="text" onchange="saveInputValue(this)"></div>
-                <div id="selection-10" style="display:none;"><input id="name-input" data-id="10" type="text" onchange="saveInputValue(this)"></div>
+                <div class="num-selection-input">
+                    <label>選択肢</label> 
+                    <input id="num-selection-input" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
+                </div>
+                <div class="selection">
+                    <div id="selection-1">                       <input id="name-input" class="input is-primary is-small" data-id="1" type="text" onchange="saveInputValue(this)" placeholder="選択肢1" maxlength="10"></div>
+                    <div id="selection-2">                       <input id="name-input" class="input is-primary is-small" data-id="2" type="text" onchange="saveInputValue(this)" placeholder="選択肢2" maxlength="10"></div>
+                    <div id="selection-3" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="3" type="text" onchange="saveInputValue(this)" placeholder="選択肢3" maxlength="10"></div>
+                    <div id="selection-4" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="4" type="text" onchange="saveInputValue(this)" placeholder="選択肢4" maxlength="10"></div>
+                    <div id="selection-5" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="5" type="text" onchange="saveInputValue(this)" placeholder="選択肢5" maxlength="10"></div>
+                    <div id="selection-6" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="6" type="text" onchange="saveInputValue(this)" placeholder="選択肢6" maxlength="10"></div>
+                    <div id="selection-7" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="7" type="text" onchange="saveInputValue(this)" placeholder="選択肢7" maxlength="10"></div>
+                    <div id="selection-8" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="8" type="text" onchange="saveInputValue(this)" placeholder="選択肢8" maxlength="10"></div>
+                    <div id="selection-9" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="9" type="text" onchange="saveInputValue(this)" placeholder="選択肢9" maxlength="10"></div>
+                    <div id="selection-10" style="display:none;"><input id="name-input" class="input is-primary is-small" data-id="10" type="text" onchange="saveInputValue(this)" placeholder="選択肢10" maxlength="10"></div>
+                </div>
             </div>
-            <button id="setting-enter-btn" onclick="goToVote()">決定</button>
+            <a id="setting-enter-btn" class="button is-primary" onclick="goToVote()">決定</a>
         </div>
 
+        <!------------------ VOTE  ------------------>
         <div id="vote" style="display:none;">
             <div> 投票中 <span id="vote-state"></span></div>
-
             <div class="vote-selection">
-                <div id="vote-1"><div id="name-1"></div><input id="num-vote-1" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-2"><div id="name-2"></div><input id="num-vote-2" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-3" style="display:none;"><div id="name-3"></div><input id="num-vote-3" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-4" style="display:none;"><div id="name-4"></div><input id="num-vote-4" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-5" style="display:none;"><div id="name-5"></div><input id="num-vote-5" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-6" style="display:none;"><div id="name-6"></div><input id="num-vote-6" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-7" style="display:none;"><div id="name-7"></div><input id="num-vote-7" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-8" style="display:none;"><div id="name-8"></div><input id="num-vote-8" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-9" style="display:none;"><div id="name-9"></div><input id="num-vote-9" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-10" style="display:none;"><div id="name-10"></div><input id="num-vote-10" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-1">                       <span id="name-1"></span> <input id="num-vote-1" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-2">                       <span id="name-2"></span> <input id="num-vote-2" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-3" style="display:none;"> <span id="name-3"></span> <input id="num-vote-3" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-4" style="display:none;"> <span id="name-4"></span> <input id="num-vote-4" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-5" style="display:none;"> <span id="name-5"></span> <input id="num-vote-5" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-6" style="display:none;"> <span id="name-6"></span> <input id="num-vote-6" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-7" style="display:none;"> <span id="name-7"></span> <input id="num-vote-7" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-8" style="display:none;"> <span id="name-8"></span> <input id="num-vote-8" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-9" style="display:none;"> <span id="name-9"></span> <input id="num-vote-9" type="range" name="speed" min="0" max="100"></div>
+                <div id="vote-10" style="display:none;"><span id="name-10"></span><input id="num-vote-10" type="range" name="speed" min="0" max="100"></div>
             </div>
-
-            <button id="vote-enter-btn" onclick="aVoteFinish()">投票完了</button>
+            <a id="vote-enter-btn" class="button is-primary" onclick="aVoteFinish()">投票完了</a>
         </div>
 
+        <!------------------ RESULT  ------------------>
         <div id="result" style="display:none;">
             <div>投票の結果<span id="result-selection"></span>になりました</div>
+            <div class='wrapper'>
+                <div class="result-slection">
+                    <div class="name">dada</div>
+                    <div class='bar'>   
+                        <div class='bar-info html' data-total='95'>
+                            <span class='percent'>95</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='bar'>
+                  <div class='bar-info css' data-total='95'>
+                    <span class='percent'>95</span>
+                  </div>
+                </div>
+            
+                <div class='bar'>
+                  <div class='bar-info js' data-total='90'>
+                    <span class='percent'>90</span>
+                  </div>
+                </div>
+                
+                <div class='bar'>
+                  <div class='bar-info ps' data-total='85'>
+                    <span class='percent'>85</span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
         </div>
     </body>
 </html>

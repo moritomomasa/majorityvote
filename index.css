@@ -1,0 +1,131 @@
+* {
+    margin: 20px;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+.num-members {
+
+}
+.num-members-input {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.num-selection-input {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.selection {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.selection div {
+    width: 300px; 
+    margin: 7px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vote-selection div {
+    margin: 7px;
+}
+.vote-selection span {
+    display: inline-block;
+    width: 100px;
+}
+
+
+/* ゲージのUI */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    height: 14px;
+    width: 200px;
+    background: #45d8a7; 
+    border-radius: 10px; 
+    border: solid 3px #defff8; 
+  }
+/* つまみ */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #00c499;
+    width: 24px; /* 幅 */
+    height: 24px; /* 高さ */
+    border-radius: 50%; /* 円形に */
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15); /* 影 */
+}
+/* Moz向けのつまみ */
+input[type="range"]::-moz-range-thumb {
+    background: #00c499;
+    width: 24px; 
+    height: 24px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+/* Firefoxで点線が周りに表示されてしまう問題の解消 */
+input[type="range"]::-moz-focus-outer {
+    border: 0;
+}
+/* つまみをドラッグしているときのスタイル */
+input[type="range"]:active::-webkit-slider-thumb {
+    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.result-selection {
+    width: 100%;
+    position: flex;
+    background-color: cadetblue;
+}
+.result-selection name {
+    width: 100px;
+    text-align: left;
+}
+.bar {
+  width: 70%;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  padding: 15px;
+}
+.bar .bar-info {
+  border-radius: 5px;
+  padding: 0.75rem;
+  background: #fd7473;
+  color: white;
+  width: 40%;
+  position: relative;
+  height: 24px;
+  transition: width 3.3s ease-in-out;
+}
+.bar .bar-info .percent {
+  float: right;
+}
+.bar .bar-info.html {
+  background: linear-gradient(#fd7473, #FC688E), #fd7473;
+}
+.bar .bar-info.css {
+  background: linear-gradient(#fec951, #FCAD44), #fec951;
+}
+.bar .bar-info.js {
+  background: linear-gradient(#47b8e0, #28BEFA), #47b8e0;
+}
+.bar .bar-info.ps {
+  background: linear-gradient(#9f68d0, #BB68D0), #9f68d0;
+}

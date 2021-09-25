@@ -77,7 +77,7 @@ function aVoteFinish() {
 }
 
 function calcVoteAggregation() {
-    for(var i=1; i<=numMembers; i++) {
+    for(var i=1; i<=numSelections; i++) {
             var iSelection = document.getElementById('num-vote-' + i);
             voteAggregation[i-1] += parseInt(iSelection.value);
             iSelection.value = 50; // reset range bar
@@ -106,3 +106,28 @@ function getMaxId(arr) {
     }
     return maxId;
 }
+
+$(document).ready(function() {
+    function skillSet() {
+      $('.bar-info').each(function() {
+        total = $(this).data("total");
+        $(this).css("width", total + "%");
+      });
+      
+      $('.percent').each(function() {
+        var $this = $(this);
+        $({
+          Counter: 10
+        }).animate({
+          Counter: $this.text()
+        }, {
+          duration: 3000,
+          easing: 'swing',
+          step: function() {
+            $this.text(Math.ceil(this.Counter) + "%");
+          }
+        });
+      });
+    };
+    setTimeout(skillSet, 1000);
+  });
