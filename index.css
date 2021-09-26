@@ -1,16 +1,16 @@
 * {
-    margin: 20px;
+  margin: 20px;
 }
-
 header {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
+/* ----------------- SETTINGS ----------------- */
 .num-members-input {
-    width: 150px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .num-members-input label{
   width: 150px;
@@ -19,9 +19,9 @@ header {
   width: 100px;
 }
 .num-selection-input {
-    width: 150px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .num-selection-input label{
   width: 150px;
@@ -30,70 +30,64 @@ header {
   width: 100px;
 }
 .selection {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .selection div {
-    width: 300px; 
-    margin: 7px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 300px; 
+  margin: 7px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* ----------------- VOTE ----------------- */
 .vote-selection div {
-    margin: 7px;
+  margin: 7px;
 }
 .vote-selection span {
-    display: inline-block;
-    width: 100px;
+  display: inline-block;
+  width: 100px;
+}
+input[type="range"] { /* ゲージのUI */
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  height: 14px;
+  width: 200px;
+  background: #45d8a7; 
+  border-radius: 10px; 
+  border: solid 3px #defff8; 
+}
+input[type="range"]::-webkit-slider-thumb { /* つまみ */
+  -webkit-appearance: none;
+  background: #00c499;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+}
+input[type="range"]::-moz-range-thumb { /* Moz向けのつまみ */
+  background: #00c499;
+  width: 24px; 
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+input[type="range"]::-moz-focus-outer { /* Firefox対応 */
+  border: 0;
+}
+input[type="range"]:active::-webkit-slider-thumb { /* ドラッグ中*/
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
 }
 
-
-/* ゲージのUI */
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    outline: none;
-    height: 14px;
-    width: 200px;
-    background: #45d8a7; 
-    border-radius: 10px; 
-    border: solid 3px #defff8; 
-  }
-/* つまみ */
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background: #00c499;
-    width: 24px; /* 幅 */
-    height: 24px; /* 高さ */
-    border-radius: 50%; /* 円形に */
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15); /* 影 */
-}
-/* Moz向けのつまみ */
-input[type="range"]::-moz-range-thumb {
-    background: #00c499;
-    width: 24px; 
-    height: 24px;
-    border-radius: 50%;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
-    border: none;
-}
-/* Firefoxで点線が周りに表示されてしまう問題の解消 */
-input[type="range"]::-moz-focus-outer {
-    border: 0;
-}
-/* つまみをドラッグしているときのスタイル */
-input[type="range"]:active::-webkit-slider-thumb {
-    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
-}
-
+/* ----------------- RESULT ----------------- */
 .wrapper {
   margin: 0 auto;
   width: 500px;
 }
-
 .result-selection {
   width: 100%;
   display: flex;

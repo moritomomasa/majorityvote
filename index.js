@@ -8,7 +8,7 @@ var numSelections = 2;
 var selectionsName = new Array(10);
 var voteAggregation = new Array(10);
 
-// settings ---------------------------------------------------------------
+// SETTINGS ---------------------------------------------------------------
 function saveInputValue(obj) {
     if(obj.id == 'num-member-input') {
         value = valueAdjustmentOfMembers(obj.value);
@@ -44,18 +44,23 @@ function valueAdjustmentOfSelections(value) {
 }
 
 function goToVote() {
+    // hidden settings screen
     document.getElementById('settings').style.display = 'none';
+
     dispVoteScreen();
 }
 
-// vote -------------------------------------------------------------------
+// VOTE -------------------------------------------------------------------
 var iVote = 1;
 
 function dispVoteScreen() {
+    // visualize vote screen
     document.getElementById('vote').style.display = 'block';
+
+    // disp current voter status 
     document.getElementById("vote-state").innerHTML = '1 / ' + numMembers;
  
-    // visible or invisible
+    // disp vote selections
     for(var i=1; i<=numSelections; i++) {
         var iSelection = document.getElementById('vote-' + i);
         iSelection.style.display = 'block';
@@ -83,17 +88,24 @@ function calcVoteAggregation() {
 }
 
 function goToResult() {
+    // hidden vote screen
     document.getElementById('vote').style.display = 'none';
+    
     dispResultScreen();
 }
 
-// result -----------------------------------------------------------------
+// RESULT -----------------------------------------------------------------
 function dispResultScreen() {
+    // visualize result screen
     document.getElementById('result').style.display = 'block';
+
+    // disp the most popular one
     maxVoteIndex = getMaxId(voteAggregation);
     document.getElementById('top1').innerHTML = selectionsName[maxVoteIndex];
+
+    // disp graph and run animation
     dispGraph();
-    setTimeout(skillSet(voteAggregation[maxVoteIndex]), 500);
+    setTimeout(graphAnim(voteAggregation[maxVoteIndex]), 500);
 }
 
 function getMaxId(arr) {
@@ -122,7 +134,7 @@ function dispGraph() {
     }
 }
 
-function skillSet(numMaxVote) {
+function graphAnim(numMaxVote) {
     $('.bar-info').each(function() {
         total = $(this).data("total");
         width = (total/numMaxVote) * 100;
