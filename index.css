@@ -7,15 +7,15 @@ header {
 }
 
 /* ----------------- SETTINGS ----------------- */
-.num-members-input {
+.member {
   width: 150px;
   margin-left: auto;
   margin-right: auto;
 }
-.num-members-input label{
+.member label{
   width: 150px;
 }
-.num-members-input input{
+.member input{
   width: 100px;
 }
 .num-selection-input {
@@ -29,12 +29,12 @@ header {
 .num-selection-input input{
   width: 100px;
 }
-.selection {
+.name-selection-input {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-.selection div {
+.name-selection-input div {
   width: 300px; 
   margin: 7px;
   margin-left: auto;

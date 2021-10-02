@@ -24,56 +24,49 @@
         <div class="main has-text-centered">
         <!------------------ SETTING  ------------------>
         <div id="settings">
-            <div class="num-members">
-                <div class="num-members-input">
-                    <label>人数 2~10</label>
-                    <input id="num-member-input" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
-                </div>
+            <!-- member -->
+            <div class="member">
+                <label>人数 2~10</label>
+                <input id="member" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
             </div>
-            <div class="num-selection">
+
+            <!-- selection -->
+            <div class="selection">
                 <div class="num-selection-input">
                     <label>選択肢 2~10</label> 
-                    <input id="num-selection-input" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
+                    <input id="num-selection" class="input is-primary is-small" type="number" onChange="saveInputValue(this)" value="2" min="2" max="10">
                 </div>
-                <div class="selection">
-                    <div id="selection-1">                       <input id="name-input" class="input is-primary is-small" data-id="1" type="text" onchange="saveInputValue(this)" placeholder="選択肢1" maxlength="10"></div>
-                    <div id="selection-2">                       <input id="name-input" class="input is-primary is-small" data-id="2" type="text" onchange="saveInputValue(this)" placeholder="選択肢2" maxlength="10"></div>
-                    <div id="selection-3" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="3" type="text" onchange="saveInputValue(this)" placeholder="選択肢3" maxlength="10"></div>
-                    <div id="selection-4" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="4" type="text" onchange="saveInputValue(this)" placeholder="選択肢4" maxlength="10"></div>
-                    <div id="selection-5" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="5" type="text" onchange="saveInputValue(this)" placeholder="選択肢5" maxlength="10"></div>
-                    <div id="selection-6" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="6" type="text" onchange="saveInputValue(this)" placeholder="選択肢6" maxlength="10"></div>
-                    <div id="selection-7" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="7" type="text" onchange="saveInputValue(this)" placeholder="選択肢7" maxlength="10"></div>
-                    <div id="selection-8" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="8" type="text" onchange="saveInputValue(this)" placeholder="選択肢8" maxlength="10"></div>
-                    <div id="selection-9" style="display:none;"> <input id="name-input" class="input is-primary is-small" data-id="9" type="text" onchange="saveInputValue(this)" placeholder="選択肢9" maxlength="10"></div>
-                    <div id="selection-10" style="display:none;"><input id="name-input" class="input is-primary is-small" data-id="10" type="text" onchange="saveInputValue(this)" placeholder="選択肢10" maxlength="10"></div>
-                </div>
+                <div id="name-selection" class="name-selection-input"></div>
             </div>
+
+            <!-- button -->
             <a id="setting-enter-btn" class="button is-primary" onclick="goToVote()">決定</a>
         </div>
 
         <!------------------ VOTE  ------------------>
         <div id="vote" style="display:none;">
+            <!-- current state -->
             <div> 投票中 <span id="vote-state"></span></div>
-            <div class="vote-selection">
-                <div id="vote-1">                       <span id="name-1"></span> <input id="num-vote-1" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-2">                       <span id="name-2"></span> <input id="num-vote-2" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-3" style="display:none;"> <span id="name-3"></span> <input id="num-vote-3" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-4" style="display:none;"> <span id="name-4"></span> <input id="num-vote-4" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-5" style="display:none;"> <span id="name-5"></span> <input id="num-vote-5" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-6" style="display:none;"> <span id="name-6"></span> <input id="num-vote-6" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-7" style="display:none;"> <span id="name-7"></span> <input id="num-vote-7" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-8" style="display:none;"> <span id="name-8"></span> <input id="num-vote-8" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-9" style="display:none;"> <span id="name-9"></span> <input id="num-vote-9" type="range" name="speed" min="0" max="100"></div>
-                <div id="vote-10" style="display:none;"><span id="name-10"></span><input id="num-vote-10" type="range" name="speed" min="0" max="100"></div>
-            </div>
+
+            <!-- vote -->
+            <div id="vote-selection"></div>
+
+            <!-- button -->
             <a id="vote-enter-btn" class="button is-primary" onclick="aVoteFinish()">投票完了</a>
         </div>
 
         <!------------------ RESULT  ------------------>
         <div id="result" style="display:none;">
+            <!-- result text -->
             <div>投票の結果<span id="top1"></span>になりました</div>
+
+            <!-- result graph -->
             <div id="result-graph" class='wrapper'></div>
+
+            <!-- button -->
             <a id="return-btn" class="button is-primary" onclick="reload()">戻る</a>
+        </div>
+
         </div>
     </body>
 </html>
