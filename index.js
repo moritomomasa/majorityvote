@@ -193,3 +193,8 @@ function graphAnim(numMaxVote) {
         });
     });
 };
+
+//
+function reload() {
+    document.location.reload();
+}

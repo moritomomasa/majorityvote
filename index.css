@@ -1,11 +1,11 @@
 * {
-  margin: 20px;
+  margin-top: 20px;
+  transition : all 200ms;
 }
 header {
   margin: 0;
   padding: 0;
 }
-
 /* ----------------- SETTINGS ----------------- */
 .member {
   width: 150px;
@@ -94,13 +94,12 @@ input[type="range"]:active::-webkit-slider-thumb { /* ドラッグ中*/
 }
 .result-selection .name {
   float: left;
-  width: 80px;
+  width: 20%;
   margin: auto;
 }
 .result-selection .bar {
   float: right;
-  width: 100%;
-  height: 48px;
+  width: 80%;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   padding: 15px 0;
@@ -117,4 +116,51 @@ input[type="range"]:active::-webkit-slider-thumb { /* ドラッグ中*/
 }
 .result-selection .bar .bar-info.result {
   background: linear-gradient(#33b187, #0ca874), #33b187;
+}
+
+/* ----------------- RESPONSIVE ----------------- */
+@media screen and (max-width: 700px) {
+  .name-selection-input div {
+    width: 300px; 
+  }
+  .wrapper {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 500px) {
+  /* RESULT */
+  .wrapper {
+    width: 300px;
+  }
+}@media screen and (max-width: 400px) {
+  /* RESULT */
+  .wrapper {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 375px) {
+  /* SETTINGS */
+  .name-selection-input div {
+    width: 250px; 
+  }
+  /* RESULT */
+  .wrapper {
+    width: 300px;
+  }
+  .result-selection .name {
+    width: 25%;
+  }
+  .result-selection .bar {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 320px) {
+  /* SETTINGS */
+  .name-selection-input div {
+    width: 200px; 
+  }
+  /* RESULT */
+  .wrapper {
+    width: 250px;
+  }
 }
